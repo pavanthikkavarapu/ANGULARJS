@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+
+    <b>The hexadecimal value of 255 is:</b>
+
+    <h1>{{hex}}</h1>
+
+</div>
+
+<p>In custom service we are providing business logic that converts a given number into a hexadecimal number.</p>
+
+<script>
+    var app = angular.module('myApp', []);
+
+    app.service('hexa',hexa);
+      function hexa() {
+        this.myFunc = function (x) {
+            return x.toString(16);
+        }
+    };
+    app.controller('myCtrl',myCtrl);
+    function myCtrl($scope, hexa)
+    {
+        $scope.hex = hexa.myFunc(255);
+    };
+</script>
+
+</body>
+</html>
